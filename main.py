@@ -1,1 +1,1 @@
-print("Molaps ist schlau")
+import pygame
