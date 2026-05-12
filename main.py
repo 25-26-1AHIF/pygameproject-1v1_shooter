@@ -9,9 +9,9 @@ running = True
 while running:
  # Jedes Ereignis (Event) durchgehen
  for event in pygame.event.get():
- # Das Spiel verlassen, falls der Benutzer das Fenster schließen möchte
+   # Das Spiel verlassen, falls der Benutzer das Fenster schließen möchte
  if event.type == pygame.QUIT:
- running = False
+  running = False
 
  # Weitere Events abfragen (z.B. Tastatureingaben)
  # Update der Spiellogik
