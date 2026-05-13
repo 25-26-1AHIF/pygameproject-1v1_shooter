@@ -1,5 +1,4 @@
 import pygame
-from pygame import K_ESCAPE
 
 from GameVariables.GameVariables import GameVariables as gv
 from GameVariables.GameVariables import GameScreens as gs
@@ -16,9 +15,9 @@ def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     starten_text_rect = starten_text.get_rect(center=(70, 225))
     schließen_text_rect = schließen_text.get_rect(center=(65, 400))
 
-    starten_button = pygame.Rect(20, 180, 120, 70)
-    #schließen_button = pygame.Rect(20, 300, 120, 70)
-    # geht noch nciht
+    starten_button = pygame.Rect(35, 225, 120, 70)
+    schließen_button = pygame.Rect(20, 400, 120, 70)
+
     running = True
     while running:
         for event in pygame.event.get():
@@ -30,10 +29,9 @@ def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if starten_button.collidepoint(event.pos):
                     return gs.PLAY
-          #  if event.type == pygame.MOUSEBUTTONDOWN:
-           #     if schließen_button.collidepoint(event.pos):
-            #        return gs.EXIT
-        #geht noch nicht
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if schließen_button.collidepoint(event.pos):
+                    return gs.EXIT
 
         screen.fill("blue")
         pygame.draw.rect(screen, "red", starten_text_rect, border_radius=10)
