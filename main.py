@@ -17,9 +17,9 @@ def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     schließen_text_rect = schließen_text.get_rect(center=(65, 400))
     keybinds_text_rect = keybinds_text.get_rect(center=(110, 300))
 
-    starten_button = pygame.Rect(35, 200, 120, 70)
-    schließen_button = pygame.Rect(20, 400, 120, 70)
-    keybinds_button = pygame.Rect(20, 300, 120, 70)
+    starten_button = pygame.Rect(20, 170, 220, 70)
+    schließen_button = pygame.Rect(20, 370, 220, 70)
+    keybinds_button = pygame.Rect(20, 270, 220, 70)
 
     running = True
     while running:
@@ -32,10 +32,8 @@ def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if starten_button.collidepoint(event.pos):
                     return gs.PLAY
-            if event.type == pygame.MOUSEBUTTONDOWN:
                 if schließen_button.collidepoint(event.pos):
                     return gs.EXIT
-            if event.type == pygame.MOUSEBUTTONDOWN:
                 if keybinds_button.collidepoint(event.pos):
                     return gs.SETTINGS
 
@@ -61,6 +59,9 @@ def pause_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
     pygame.init()
     pygame.display.set_caption("||| 🔫 1vs1 Shooter 🔫 ||| PAUSE |||")
 
+    pause_text = gv.FONT_BIG.render("GAME PAUSIERT", True, "white")
+    leer_text = gv.FONT_MIDDLE.render("Leertaste um Fortzufahren", True, "purple")
+
     running = True
     while running:
         for event in pygame.event.get():
@@ -71,6 +72,8 @@ def pause_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
                if event.key == pygame.K_SPACE:
                    return gs.PLAY
         screen.fill("green")
+        screen.blit(pause_text, (150,100))
+        screen.blit(leer_text, (150, 400))
         clock.tick(gv.FPS)
         pygame.display.flip()
 
