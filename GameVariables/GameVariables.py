@@ -20,4 +20,6 @@ class GameScreens:
     MENUE = "MENUE"
     PLAY = "PLAY"
     EXIT = "EXIT"
+    PAUSE = "PAUSE"
+    SETTINGS = "SETTINGS"
     actual = MENUE
