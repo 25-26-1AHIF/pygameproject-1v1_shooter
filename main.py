@@ -5,7 +5,7 @@ from GameVariables.GameVariables import GameScreens as gs
 
 def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     pygame.init()
-    pygame.display.set_caption("||| 🔫 1vs1 Shooter  ||| MENÜ |||")
+    pygame.display.set_caption("||| 🔫 1vs1 Shooter 🔫 ||| MENÜ |||")
 
     titel_text = gv.FONT_BIG.render("1 vs 1 Shooter", True, "white")
     starten_text = gv.FONT_MIDDLE.render("Start", True, "white")
@@ -15,7 +15,7 @@ def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     titel_text_rect = titel_text.get_rect(center=(gv.SCREEN_WIDTH / 2, 75))
     starten_text_rect = starten_text.get_rect(center=(70, 200))
     schließen_text_rect = schließen_text.get_rect(center=(65, 400))
-    keybinds_text_rect = keybinds_text.get_rect(center=(110, 300))
+    keybinds_text_rect = keybinds_text.get_rect(center=(100, 300))
 
     starten_button = pygame.Rect(20, 170, 220, 70)
     schließen_button = pygame.Rect(20, 370, 220, 70)

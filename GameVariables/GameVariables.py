@@ -12,9 +12,9 @@ class GameVariables:
     @staticmethod
     def init():
         pygame.init()
-        GameVariables.FONT_BIG = pygame.sysfont.SysFont(name="arial", size=55, bold = True)
-        GameVariables.FONT_MIDDLE =  pygame.sysfont.SysFont(name="arial", size=40, bold = True)
-        GameVariables.FONT_SMALL =  pygame.sysfont.SysFont(name="arial", size=14, bold = True)
+        GameVariables.FONT_BIG = pygame.sysfont.SysFont(name="comic sans", size=55, bold = True)
+        GameVariables.FONT_MIDDLE =  pygame.sysfont.SysFont(name="comic sans", size=40, bold = True)
+        GameVariables.FONT_SMALL =  pygame.sysfont.SysFont(name="comic sans", size=14, bold = True)
 
 class GameScreens:
     MENUE = "MENUE"
