@@ -4,6 +4,11 @@ class GameVariables:
     FPS = 60
     SCREEN_HEIGHT = 600
     SCREEN_WIDTH = 800
+    Square_Size = 80
+
+    Muni_Size = 20
+    Munition_heigh = 50
+    Munition_width = 30
 
     FONT_BIG:pygame.sysfont.Font = None
     FONT_MIDDLE:pygame.sysfont.Font = None
