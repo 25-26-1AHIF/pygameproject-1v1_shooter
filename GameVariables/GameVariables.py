@@ -1,10 +1,10 @@
 import pygame
 
 class GameVariables:
-    FPS = 60
-    SCREEN_HEIGHT = 600
     SCREEN_WIDTH = 800
-    Square_Size = 80
+    SCREEN_HEIGHT = 600
+    SQUARE_SIZE = 50
+    FPS = 60
 
     Muni_Size = 20
     Munition_heigh = 50
