@@ -1,11 +1,10 @@
 import  pygame
 from GameVariables.GameVariables import GameVariables as GV
-import GameVariables.Player as PL
 from GameVariables.Rocket import Rocket, Rockets
 
 
 
-class Player_1:
+class Player1:
     def __init__(self, screen: pygame.Surface):
         self.screen = screen
         self.x = GV.SCREEN_WIDTH / 2 - GV.SQUARE_SIZE / 2

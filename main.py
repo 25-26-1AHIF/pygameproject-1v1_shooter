@@ -1,5 +1,5 @@
 import pygame
-from GameVariables.Player import Player_1, Player2
+from GameVariables.Player import Player1, Player2
 from GameVariables.GameVariables import GameVariables as gv
 from GameVariables.GameVariables import GameScreens as gs
 
@@ -107,7 +107,7 @@ def play_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
     pygame.init()
     pygame.display.set_caption("||| 🔫  1vs1 Shooter 🔫 ||| PLAY |||")
 
-    player1 = Player_1(screen)
+    player1 = Player1(screen)
     player2 = Player2(screen)
 
     running = True
