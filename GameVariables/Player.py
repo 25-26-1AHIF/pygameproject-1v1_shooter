@@ -1,74 +1,66 @@
-import  pygame
+import pygame
 from GameVariables.GameVariables import GameVariables as GV
-from GameVariables.Rocket import Rockets
-
+from GameVariables.Rocket import Rocket, Rockets
 
 
 class Player1:
-    def __init__(self, screen: pygame.Surface):
+    def __init__(self, screen):
         self.screen = screen
-        self.x = GV.SCREEN_WIDTH / 2 - GV.SQUARE_SIZE / 2
-        self.y = GV.SCREEN_HEIGHT - GV.SQUARE_SIZE - 1
+        self.x = 100
+        self.y = GV.SCREEN_HEIGHT // 2
+        self.dx = 6
         self.rockets = Rockets(screen)
-        self.dx = 7
-        self.P1_left = pygame.K_a
-        self.P1_right = pygame.K_d
-        self.P1_up = pygame.K_w
-        self.P1_down = pygame.K_s
 
     def shoot(self):
-        muni_x_1 = self.x + GV.SQUARE_SIZE / 2 - GV.Muni_Size / 2
-        muni_y_1 = self.y - GV.MISSLE_SIZE
-        return Rockets(self.screen, muni_x_1, muni_y_1, 0, -5)
+        muni_x = self.x + 25
+        muni_y = self.y
+        rocket = Rocket(self.screen, muni_x, muni_y, +8, 0)
+        self.rockets.add_rocket(rocket)
 
     def move(self):
-        keys_pressed = pygame.key.get_pressed()
-        if keys_pressed[self.P1_left]:
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_a]:
             self.x -= self.dx
-        if keys_pressed[self.P1_right]:
+        if keys[pygame.K_d]:
             self.x += self.dx
-        if keys_pressed[self.P1_down]:
-            self.y -= 2
-        if keys_pressed[self.P1_up]:
-            self.y += 2
-
-
+        if keys[pygame.K_w]:
+            self.y -= self.dx
+        if keys[pygame.K_s]:
+            self.y += self.dx
 
     def update_and_draw(self):
         self.move()
         self.rockets.update_and_draw()
-        pygame.draw.rect(self.screen, "red", (self.x, self.y, GV.SQUARE_SIZE, GV.SQUARE_SIZE))
+        pygame.draw.rect(self.screen, "red", (self.x, self.y, 50, 50))
+
 
 class Player2:
-    def __init__(self, screen: pygame.Surface):
+    def __init__(self, screen):
         self.screen = screen
-        self.x = GV.SCREEN_WIDTH / 2 - GV.SQUARE_SIZE / 2
-        self.y = GV.SCREEN_HEIGHT - GV.SQUARE_SIZE - 1
+        self.x = GV.SCREEN_WIDTH - 150
+        self.y = GV.SCREEN_HEIGHT // 2
+        self.dx = 6
         self.rockets = Rockets(screen)
-        self.dx = 7
-        self.P2_left = pygame.K_LEFT
-        self.P2_right = pygame.K_RIGHT
-        self.P2_up = pygame.K_UP
-        self.P2_down = pygame.K_DOWN
 
     def shoot(self):
-        muni_x = self.x + GV.SQUARE_SIZE / 2 - GV.MISSLE_SIZE / 2
-        muni_y = self.y - GV.MISSLE_SIZE
-        return Rockets(self.screen, muni_x, muni_y, 0, -5)
-
+        muni_x = self.x + 25
+        muni_y = self.y
+        rocket = Rocket(self.screen, muni_x, muni_y, -8, 0)
+        self.rockets.add_rocket(rocket)
 
     def move(self):
-        keys_pressed = pygame.key.get_pressed()
-        if keys_pressed[self.P2_left]:
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_LEFT]:
             self.x -= self.dx
-        if keys_pressed[self.P2_right]:
+        if keys[pygame.K_RIGHT]:
             self.x += self.dx
-        if keys_pressed[self.P2_up]:
-            self.y -= 2
-        if keys_pressed[self.P2_down]:
-            self.y += 2
+        if keys[pygame.K_UP]:
+            self.y -= self.dx
+        if keys[pygame.K_DOWN]:
+            self.y += self.dx
 
     def update_and_draw(self):
         self.move()
         self.rockets.update_and_draw()
-        pygame.draw.rect(self.screen, "blue", (self.x, self.y, GV.SQUARE_SIZE, GV.SQUARE_SIZE))
+        pygame.draw.rect(self.screen, "blue", (self.x, self.y, 50, 50))
+
