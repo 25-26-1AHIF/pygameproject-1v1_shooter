@@ -1,14 +1,9 @@
 import pygame
 
 class GameVariables:
-    SCREEN_WIDTH = 800
-    SCREEN_HEIGHT = 600
-    SQUARE_SIZE = 50
     FPS = 60
-
-    Muni_Size = 20
-    Munition_heigh = 50
-    Munition_width = 30
+    SCREEN_HEIGHT = 600
+    SCREEN_WIDTH = 800
 
     FONT_BIG:pygame.sysfont.Font = None
     FONT_MIDDLE:pygame.sysfont.Font = None

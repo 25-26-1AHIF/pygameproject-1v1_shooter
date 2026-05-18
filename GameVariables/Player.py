@@ -1,6 +1,6 @@
 import  pygame
 from GameVariables.GameVariables import GameVariables as GV
-from GameVariables.Rocket import Rocket, Rockets
+from GameVariables.Rocket import Rockets
 
 
 
@@ -11,15 +11,15 @@ class Player1:
         self.y = GV.SCREEN_HEIGHT - GV.SQUARE_SIZE - 1
         self.rockets = Rockets(screen)
         self.dx = 7
-        self.P1_left = pygame.K_A
-        self.P1_right = pygame.K_D
-        self.P1_up = pygame.K_W
-        self.P1_down = pygame.K_S
+        self.P1_left = pygame.K_a
+        self.P1_right = pygame.K_d
+        self.P1_up = pygame.K_w
+        self.P1_down = pygame.K_s
 
     def shoot(self):
         muni_x_1 = self.x + GV.SQUARE_SIZE / 2 - GV.Muni_Size / 2
         muni_y_1 = self.y - GV.MISSLE_SIZE
-        return Rocket(self.screen, muni_x_1, muni_y_1, 0, -5)
+        return Rockets(self.screen, muni_x_1, muni_y_1, 0, -5)
 
     def move(self):
         keys_pressed = pygame.key.get_pressed()
