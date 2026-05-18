@@ -54,7 +54,7 @@ class Player2:
     def shoot(self):
         muni_x = self.x + GV.SQUARE_SIZE / 2 - GV.MISSLE_SIZE / 2
         muni_y = self.y - GV.MISSLE_SIZE
-        return RO.Rocket(self.screen, muni_x, muni_y, 0, -5)
+        return Rockets(self.screen, muni_x, muni_y, 0, -5)
 
 
     def move(self):

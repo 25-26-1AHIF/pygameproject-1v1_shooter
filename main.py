@@ -4,13 +4,15 @@ from GameVariables.GameVariables import GameVariables as gv
 from GameVariables.GameVariables import GameScreens as gs
 
 def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
+    pygame.init()
+    pygame.display.set_caption("||| 🔫 1vs1 Shooter 🔫 ||| MENÜ |||")
+
     mainscreen_bild = pygame.image.load("bilder/mainscreen.jpeg")
     mainscreen_bild = pygame.transform.scale(
         mainscreen_bild,
         (gv.SCREEN_WIDTH, gv.SCREEN_HEIGHT)
     )
-    pygame.init()
-    pygame.display.set_caption("||| 🔫 1vs1 Shooter 🔫 ||| MENÜ |||")
+
 
     titel_text = gv.FONT_BIG.render(" 1 vs 1 Shooter ", True, "white")
     starten_text = gv.FONT_MIDDLE.render(" Start ", True, "white")
@@ -22,15 +24,18 @@ def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     starten_button = pygame.Rect(0, 170, 220, 70)
     schließen_button = pygame.Rect(0, 370, 220, 70)
     keybinds_button = pygame.Rect(0, 270, 220, 70)
-
     running = True
     while running:
+        mouse_pos = pygame.mouse.get_pos()
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     return gs.EXIT
+
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if starten_button.collidepoint(event.pos):
                     return gs.PLAY
@@ -39,18 +44,32 @@ def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                 if keybinds_button.collidepoint(event.pos):
                     return gs.SETTINGS
 
-        screen.blit(mainscreen_bild, (0,0))
-        pygame.draw.rect(screen, gv.lila_farbe, starten_button, border_radius=10)
-        pygame.draw.rect(screen, gv.lila_farbe, schließen_button, border_radius=10)
+        screen.blit(mainscreen_bild, (0, 0))
+
+        # HOVER Farben
+        starten_farbe = gv.lila_farbe
+        schließen_farbe = gv.lila_farbe
+        keybinds_farbe = gv.lila_farbe
+
+        if starten_button.collidepoint(mouse_pos):
+            starten_farbe = gv.hellblau_farbe
+
+        if schließen_button.collidepoint(mouse_pos):
+            schließen_farbe = gv.hellblau_farbe
+
+        if keybinds_button.collidepoint(mouse_pos):
+            keybinds_farbe = gv.hellblau_farbe
+
+        pygame.draw.rect(screen, starten_farbe, starten_button, border_radius=10)
+        pygame.draw.rect(screen, schließen_farbe, schließen_button, border_radius=10)
+        pygame.draw.rect(screen, keybinds_farbe, keybinds_button, border_radius=10)
+
         pygame.draw.rect(screen, "red", titel_text_rect, border_radius=10)
-        pygame.draw.rect(screen, gv.lila_farbe, keybinds_button, border_radius=10)
-        #border radius ist recherchiert
 
         screen.blit(titel_text, titel_text_rect)
         screen.blit(starten_text, starten_button)
         screen.blit(schließen_text, schließen_button)
         screen.blit(keybinds_text, keybinds_button)
-
 
         clock.tick(gv.FPS)
         pygame.display.flip()
@@ -117,15 +136,15 @@ def settings_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
     Player_1_text_rect = Player_1_text.get_rect(center=(275, 175))
     Player_2_text_rect = Player_2_text.get_rect(center=(700, 175))
 
-    P1_springen = gv.FONT_SMALL.render(" Springen:      ", True, "white")
-    P1_rechts = gv.FONT_SMALL.render(" Rechts:      ", True, "white")
-    P1_links = gv.FONT_SMALL.render(" Links:        ", True, "white")
-    P1_schießen = gv.FONT_SMALL.render(" Schießen:          ", True, "white")
+    P1_springen_text = gv.FONT_SMALL.render(" Springen:    W    ", True, "white")
+    P1_rechts_text = gv.FONT_SMALL.render(" Rechts:    D    ", True, "white")
+    P1_links_text  = gv.FONT_SMALL.render(" Links:    A    ", True, "white")
+    P1_schießen_text = gv.FONT_SMALL.render(" Schießen:    E    ", True, "white")
 
-    P2_springen = gv.FONT_SMALL.render(" Springen:      ", True, "white")
-    P2_rechts = gv.FONT_SMALL.render(" Rechts:      ", True, "white")
-    P2_links = gv.FONT_SMALL.render(" Links:        ", True, "white")
-    P2_schießen = gv.FONT_SMALL.render(" Schießen:          ", True, "white")
+    P2_springen_text = gv.FONT_SMALL.render(" Springen:    ^    ", True, "white")
+    P2_rechts_text = gv.FONT_SMALL.render(" Rechts:    >    ", True, "white")
+    P2_links_text = gv.FONT_SMALL.render(" Links:    <    ", True, "white")
+    P2_schießen_text = gv.FONT_SMALL.render(" Schießen:    .    ", True, "white")
 
     P1_links_rect = pygame.Rect(180, 220, 220, 55)
     P1_rechts_rect = pygame.Rect(180, 300, 220, 55)
@@ -163,19 +182,19 @@ def settings_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
         pygame.draw.rect(screen, gv.hellblau_farbe, P1_links_rect, border_radius=10)
         pygame.draw.rect(screen, gv.hellblau_farbe, P1_rechts_rect, border_radius=10)
         pygame.draw.rect(screen, gv.hellblau_farbe, P1_schießen_rect,  border_radius=10)
-        screen.blit(P1_springen, P1_springen_rect)
-        screen.blit(P1_rechts, P1_rechts_rect)
-        screen.blit(P1_links, P1_links_rect)
-        screen.blit(P1_schießen, P1_schießen_rect)
+        screen.blit(P1_springen_text, P1_springen_rect)
+        screen.blit(P1_rechts_text, P1_rechts_rect)
+        screen.blit(P1_links_text, P1_links_rect)
+        screen.blit(P1_schießen_text, P1_schießen_rect)
 
         pygame.draw.rect(screen, gv.hellblau_farbe, P2_springen_rect, border_radius=10)
         pygame.draw.rect(screen, gv.hellblau_farbe, P2_links_rect, border_radius=10)
         pygame.draw.rect(screen, gv.hellblau_farbe, P2_rechts_rect, border_radius=10)
         pygame.draw.rect(screen, gv.hellblau_farbe, P2_schießen_rect, border_radius=10)
-        screen.blit(P2_springen, P2_springen_rect)
-        screen.blit(P2_rechts, P2_links_rect)
-        screen.blit(P2_links, P2_rechts_rect)
-        screen.blit(P2_schießen, P2_schießen_rect)
+        screen.blit(P2_springen_text, P2_springen_rect)
+        screen.blit(P2_links_text, P2_links_rect)
+        screen.blit(P2_rechts_text, P2_rechts_rect)
+        screen.blit(P2_schießen_text, P2_schießen_rect)
 
 
         clock.tick(gv.FPS)
@@ -237,4 +256,5 @@ if __name__ == '__main__':
             gs.actual = settings_screen(screen, clock)
 
         elif gs.actual == gs.EXIT:
+            print("Game beendet")
             break
