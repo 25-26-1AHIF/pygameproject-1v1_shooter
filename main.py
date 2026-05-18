@@ -3,7 +3,7 @@ import pygame
 
 from GameVariables.GameVariables import GameVariables as gv
 from GameVariables.GameVariables import GameScreens as gs
-from GameVariables.Player import Player1
+from GameVariables.Player import Player1, Player2
 
 
 def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
@@ -204,31 +204,41 @@ def settings_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
     pygame.quit()
 
 
-def play_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
-    hintergurdgame_bild = pygame.image.load("bilder/Hintergrundgame.jpeg")
-    hintergurdgame_bild = pygame.transform.scale(
-        hintergurdgame_bild,
-        (gv.SCREEN_WIDTH, gv.SCREEN_HEIGHT)
-    ) #recharchiert (alles mit bildern)
-    pygame.init()
-    pygame.display.set_caption("||| 🔫  1vs1 Shooter 🔫 ||| PLAY |||")
+def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
+    hintergrund = pygame.image.load("bilder/Hintergrundgame.jpeg")
+    hintergrund = pygame.transform.scale(hintergrund, (gv.SCREEN_WIDTH, gv.SCREEN_HEIGHT))
+
+    pygame.display.set_caption("||| PLAY |||")
+
+    player1 = Player1(screen)
+    player2 = Player2(screen)
 
     running = True
     while running:
         for event in pygame.event.get():
-            if event.type == pygame.KEYUP:
-               if event.key == pygame.K_ESCAPE:
-                    return gs.MENUE
-            if event.type == pygame.KEYDOWN:
-               if event.key == pygame.K_SPACE:
-                    return gs.PAUSE
             if event.type == pygame.QUIT:
-                running = False
-        screen.blit(hintergurdgame_bild, (0, 0))
-        clock.tick(gv.FPS)
-        pygame.display.flip()
+                return gs.EXIT
 
-    pygame.quit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    return gs.MENUE
+
+                # Player1 schießt mit E
+                if event.key == pygame.K_e:
+                    player1.shoot()
+
+                # Player2 schießt mit rechter SHIFT
+                if event.key == pygame.K_RSHIFT:
+                    player2.shoot()
+
+        screen.blit(hintergrund, (0, 0))
+
+        player1.update_and_draw()
+        player2.update_and_draw()
+
+        pygame.display.flip()
+        clock.tick(gv.FPS)
+
 
 
 def sieger_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
