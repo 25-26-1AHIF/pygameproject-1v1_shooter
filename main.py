@@ -79,6 +79,9 @@ def pause_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
                     return gs.PLAY
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        return gs.MENUE
         screen.blit(Pausescreen_bild, (0,0))
 
         pause_box = pygame.Rect(150, 140, 700, 250)
@@ -217,18 +220,21 @@ if __name__ == '__main__':
     while True:
 
         if gs.actual == gs.MENUE:
+            print("Menü Screen")
             gs.actual = menue_screen(screen, clock)
 
 
         elif gs.actual == gs.PLAY:
+            print("Play Screen")
             gs.actual = play_screen(screen, clock)
 
         elif gs.actual == gs.PAUSE:
+            print("Pause Screen")
             gs.actual = pause_screen(screen, clock)
 
         elif gs.actual == gs.SETTINGS:
+            print("Settings Screen")
             gs.actual = settings_screen(screen, clock)
-
 
         elif gs.actual == gs.EXIT:
             break
