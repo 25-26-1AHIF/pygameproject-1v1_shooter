@@ -43,11 +43,10 @@ def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                     return gs.SETTINGS
 
         screen.blit(mainscreen_bild, (0,0))
-        #screen.fill("blue")
-        pygame.draw.rect(screen, "red", starten_text_rect, border_radius=10)
-        pygame.draw.rect(screen, "red", schließen_text_rect, border_radius=10)
-        pygame.draw.rect(screen, "darkgreen", titel_text_rect, border_radius=10)
-        pygame.draw.rect(screen, "red", keybinds_text_rect, border_radius=10)
+        pygame.draw.rect(screen, (73, 3, 41), starten_text_rect, border_radius=10)
+        pygame.draw.rect(screen, (73, 3, 41), schließen_text_rect, border_radius=10)
+        pygame.draw.rect(screen, "red", titel_text_rect, border_radius=10)
+        pygame.draw.rect(screen, (73, 3, 41), keybinds_text_rect, border_radius=10)
         #border radius ist recharchiert
 
         screen.blit(titel_text, titel_text_rect)
@@ -66,9 +65,13 @@ def pause_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
     pygame.init()
     pygame.display.set_caption("||| 🔫 1vs1 Shooter 🔫 ||| PAUSE |||")
 
-    titel_text = gv.FONT_BIG.render("1 vs 1 Shooter", True, "white")
+    Pausescreen_bild = pygame.image.load("bilder/chatgpt Pause screen.png")
+    Pausescreen_bild = pygame.transform.scale(
+        Pausescreen_bild,
+        (gv.SCREEN_WIDTH, gv.SCREEN_HEIGHT)
+    )
     pause_text = gv.FONT_BIG.render("GAME PAUSIERT", True, "black")
-    leer_text = gv.FONT_MIDDLE.render("Leertaste um Fortzufahren", True, "black")
+    leer_text = gv.FONT_MIDDLE.render("Leertaste um Fortzufahren", True, "white")
 
     running = True
     while running:
@@ -79,12 +82,12 @@ def pause_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
                     return gs.PLAY
-        screen.fill("green")
-        screen.blit(pause_text, (150,175))
-        screen.blit(leer_text, (125, 400))
-        screen.blit(titel_text, (175, 50))
+        screen.blit(Pausescreen_bild, (0,0))
+        screen.blit(pause_text, (170,50))
+        screen.blit(leer_text, (125, 540))
         clock.tick(gv.FPS)
         pygame.display.flip()
+    pygame.quit()
 
 
 def settings_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
@@ -104,18 +107,22 @@ def settings_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
     P1_springen = gv.FONT_SMALL.render("Springen:      ", True, "white")
     P1_rechts = gv.FONT_SMALL.render("Rechts:      ", True, "white")
     P1_links = gv.FONT_SMALL.render("Links:        ", True, "white")
+    P1_schießen = gv.FONT_SMALL.render("Schießen:          ", True, "white")
 
     P2_springen = gv.FONT_SMALL.render("Springen:      ", True, "white")
     P2_rechts = gv.FONT_SMALL.render("Rechts:      ", True, "white")
     P2_links = gv.FONT_SMALL.render("Links:        ", True, "white")
+    P2_schießen = gv.FONT_SMALL.render("Schießen:          ", True, "white")
 
     P1_springen_rect = P1_springen.get_rect(center=(500, 200))
     P1_rechts_rect = P1_rechts.get_rect(center=(300, 250))
     P1_links_rect = P1_links.get_rect(center=(700, 250))
+    P1_schießen_rect = P1_links.get_rect(center=(500, 300))
 
     P2_springen_rect = P2_springen.get_rect(center=(500, 400))
     P2_rechts_rect = P2_rechts.get_rect(center=(300, 450))
     P2_links_rect = P2_links.get_rect(center=(700, 450))
+    P2_schießen_rect = P1_links.get_rect(center=(500, 500))
 
     running = True
     while running:
@@ -137,16 +144,20 @@ def settings_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
         pygame.draw.rect(screen, "blue", P1_springen_rect, border_radius=10)
         pygame.draw.rect(screen, "blue", P1_links_rect, border_radius=10)
         pygame.draw.rect(screen, "blue", P1_rechts_rect, border_radius=10)
+        pygame.draw.rect(screen, "blue", P1_schießen_rect, border_radius=10)
         screen.blit(P1_springen, P1_springen_rect)
         screen.blit(P1_rechts, P1_links_rect)
         screen.blit(P1_links, P1_rechts_rect)
+        screen.blit(P1_schießen, P1_schießen_rect)
 
         pygame.draw.rect(screen, "blue", P2_springen_rect, border_radius=10)
         pygame.draw.rect(screen, "blue", P2_links_rect, border_radius=10)
         pygame.draw.rect(screen, "blue", P2_rechts_rect, border_radius=10)
+        pygame.draw.rect(screen, "blue", P2_schießen_rect, border_radius=10)
         screen.blit(P2_springen, P2_springen_rect)
         screen.blit(P2_rechts, P2_links_rect)
         screen.blit(P2_links, P2_rechts_rect)
+        screen.blit(P2_schießen, P2_schießen_rect)
 
         clock.tick(gv.FPS)
         pygame.display.flip()
