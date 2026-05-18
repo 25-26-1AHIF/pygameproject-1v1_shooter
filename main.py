@@ -4,6 +4,11 @@ from GameVariables.GameVariables import GameVariables as gv
 from GameVariables.GameVariables import GameScreens as gs
 
 def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
+    mainscreen_bild = pygame.image.load("bilder/mainscreen.jpeg")
+    mainscreen_bild = pygame.transform.scale(
+        mainscreen_bild,
+        (gv.SCREEN_WIDTH, gv.SCREEN_HEIGHT)
+    )
     pygame.init()
     pygame.display.set_caption("||| 🔫 1vs1 Shooter 🔫 ||| MENÜ |||")
 
@@ -37,12 +42,14 @@ def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                 if keybinds_button.collidepoint(event.pos):
                     return gs.SETTINGS
 
-        screen.fill("blue")
+        screen.blit(mainscreen_bild, (0,0))
+        #screen.fill("blue")
         pygame.draw.rect(screen, "red", starten_text_rect, border_radius=10)
         pygame.draw.rect(screen, "red", schließen_text_rect, border_radius=10)
         pygame.draw.rect(screen, "darkgreen", titel_text_rect, border_radius=10)
         pygame.draw.rect(screen, "red", keybinds_text_rect, border_radius=10)
         #border radius ist recharchiert
+
         screen.blit(titel_text, titel_text_rect)
         screen.blit(starten_text, starten_text_rect)
         screen.blit(schließen_text, schließen_text_rect)
@@ -147,6 +154,11 @@ def settings_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
     pygame.quit()
 
 def play_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
+    hintergurdgame_bild = pygame.image.load("bilder/Hintergrundgame.jpeg")
+    hintergurdgame_bild = pygame.transform.scale(
+        hintergurdgame_bild,
+        (gv.SCREEN_WIDTH, gv.SCREEN_HEIGHT)
+    ) #recharschiert (alles mit bildern)
     pygame.init()
     pygame.display.set_caption("||| 🔫  1vs1 Shooter 🔫 ||| PLAY |||")
 
@@ -161,7 +173,7 @@ def play_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
                     return gs.PAUSE
             if event.type == pygame.QUIT:
                 running = False
-        screen.fill("pink")
+        screen.blit(hintergurdgame_bild, (0, 0))
         clock.tick(gv.FPS)
         pygame.display.flip()
 
