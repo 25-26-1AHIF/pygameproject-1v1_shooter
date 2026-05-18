@@ -3,6 +3,7 @@ from GameVariables.GameVariables import GameVariables as GV
 from GameVariables.Rocket import Rocket, Rockets
 
 
+
 class Player1:
     def __init__(self, screen):
         self.screen = screen
@@ -10,6 +11,7 @@ class Player1:
         self.y = GV.SCREEN_HEIGHT // 2
         self.dx = 6
         self.rockets = Rockets(screen)
+        self.image = pygame.image.load("bilder/Personarmnachrechts.png")
 
     def shoot(self):
         muni_x = self.x + 25
@@ -31,11 +33,13 @@ class Player1:
     def update_and_draw(self):
         self.move()
         self.rockets.update_and_draw()
-        pygame.draw.rect(self.screen, "red", (self.x, self.y, 50, 50))
+        # KI bis wir es gelernt haben
+        self.screen.blit(self.image, (self.x, self.y))
 
 
 class Player2:
     def __init__(self, screen):
+        self.image = pygame.image.load("bilder/Personarmnachlinks.png")
         self.screen = screen
         self.x = GV.SCREEN_WIDTH - 150
         self.y = GV.SCREEN_HEIGHT // 2
@@ -62,5 +66,7 @@ class Player2:
     def update_and_draw(self):
         self.move()
         self.rockets.update_and_draw()
-        pygame.draw.rect(self.screen, "blue", (self.x, self.y, 50, 50))
+        # KI bis wir es gelernt haben
+        self.screen.blit(self.image, (self.x, self.y))
+
 
