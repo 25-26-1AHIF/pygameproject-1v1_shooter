@@ -1,7 +1,10 @@
+import time
 import pygame
 
 from GameVariables.GameVariables import GameVariables as gv
 from GameVariables.GameVariables import GameScreens as gs
+from GameVariables.Player import Player1
+
 
 def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     pygame.init()
@@ -19,7 +22,7 @@ def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     schließen_text = gv.FONT_MIDDLE.render(" Quit ", True, "white")
     keybinds_text = gv.FONT_MIDDLE.render(" Keybinds ", True, "white")
 
-    titel_text_rect = titel_text.get_rect(center=(gv.SCREEN_WIDTH / 2, 75))
+    titel_text_rect = titel_text.get_rect(center=(gv.SCREEN_WIDTH / 2, 50))
 
     starten_button = pygame.Rect(0, 170, 220, 70)
     schließen_button = pygame.Rect(0, 370, 220, 70)
@@ -76,7 +79,6 @@ def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     pygame.quit()
 
 
-
 def pause_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
     pygame.init()
     pygame.display.set_caption("||| 🔫 1vs1 Shooter 🔫 ||| PAUSE |||")
@@ -112,7 +114,6 @@ def pause_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
         clock.tick(gv.FPS)
         pygame.display.flip()
     pygame.quit()
-
 
 
 def settings_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
@@ -203,7 +204,6 @@ def settings_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
     pygame.quit()
 
 
-
 def play_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
     hintergurdgame_bild = pygame.image.load("bilder/Hintergrundgame.jpeg")
     hintergurdgame_bild = pygame.transform.scale(
@@ -231,6 +231,40 @@ def play_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
     pygame.quit()
 
 
+def sieger_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
+    hintergrundwinner1_bild = pygame.image.load("bilder/mainscreen.jpeg")
+    hintergrundwinner1_bild = pygame.transform.scale(
+        hintergrundwinner1_bild,
+        (gv.SCREEN_WIDTH, gv.SCREEN_HEIGHT)
+    )
+
+    hintergrundwinner2_bild = pygame.image.load("bilder/mainscreen.jpeg")
+    hintergrundwinner2_bild = pygame.transform.scale(
+        hintergrundwinner2_bild,
+        (gv.SCREEN_WIDTH, gv.SCREEN_HEIGHT)
+    )
+
+    pygame.init()
+    pygame.display.set_caption("||| 🔫  1vs1 Shooter 🔫 ||| WINNER |||")
+
+    running = True
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.KEYUP:
+               if event.key == pygame.K_ESCAPE:
+                    return gs.MENUE
+            if event.type == pygame.QUIT:
+                running = False
+   #     if winner == Player1:
+    #        screen.blit(hintergrundwinner1_bild, (0, 0))
+     #   if winner == Player2:
+      #      screen.blit(hintergrundwinner2_bild, (0, 0))
+        clock.tick(gv.FPS)
+        pygame.display.flip()
+
+    pygame.quit()
+
+
 if __name__ == '__main__':
     gv.init()
     screen = pygame.display.set_mode((gv.SCREEN_WIDTH, gv.SCREEN_HEIGHT))
@@ -241,7 +275,6 @@ if __name__ == '__main__':
         if gs.actual == gs.MENUE:
             print("Menü Screen")
             gs.actual = menue_screen(screen, clock)
-
 
         elif gs.actual == gs.PLAY:
             print("Play Screen")
@@ -254,6 +287,12 @@ if __name__ == '__main__':
         elif gs.actual == gs.SETTINGS:
             print("Settings Screen")
             gs.actual = settings_screen(screen, clock)
+
+        elif gs.actual == gs.WINNER:
+            print("Winner Screen")
+            gs.actual = settings_screen(screen, clock)
+            time.sleep(5)
+            gs.actual = gs.MENUE
 
         elif gs.actual == gs.EXIT:
             print("Game beendet")

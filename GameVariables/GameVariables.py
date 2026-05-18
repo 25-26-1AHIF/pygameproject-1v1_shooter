@@ -18,7 +18,7 @@ class GameVariables:
     @staticmethod
     def init():
         pygame.init()
-        GameVariables.FONT_BIG = pygame.font.SysFont(name="comic sans", size=60, bold = True)
+        GameVariables.FONT_BIG = pygame.font.SysFont(name="Times New Roman", size=60, bold = True)
         GameVariables.FONT_MIDDLE =  pygame.font.SysFont(name="comic sans", size=40, bold = True)
         GameVariables.FONT_SMALL =  pygame.font.SysFont(name="comic sans", size=25, bold = True)
 
@@ -28,4 +28,5 @@ class GameScreens:
     EXIT = "EXIT"
     PAUSE = "PAUSE"
     SETTINGS = "SETTINGS"
+    WINNER = "WINNER"
     actual = MENUE
