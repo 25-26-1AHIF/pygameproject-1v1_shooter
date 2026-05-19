@@ -41,7 +41,7 @@ def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                     return gs.EXIT
 
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if event.button == 1: # AI CHatgpt wie mache ich in pygame nur mousebotton left
+                if event.button == 1: # AI Chatgpt wie mache ich in pygame nur mousebotton left
                     if starten_button.collidepoint(event.pos):
                         return gs.PLAY
                     if schließen_button.collidepoint(event.pos):
@@ -67,6 +67,12 @@ def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
             (500, 500)
         )
 
+        start_figur3 = pygame.image.load("bilder/personfürstartscreen3.png")
+        start_figur3 = pygame.transform.scale(
+            start_figur3,
+            (500, 500)
+        )
+
 
 
 
@@ -86,6 +92,7 @@ def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
 
         elif schließen_button.collidepoint(mouse_pos):
             schließen_farbe = gv.hellblau_farbe
+            screen.blit(start_figur3, (175, 40))
 
         else:
             screen.blit(start_figur1, (200, 100))
