@@ -1,6 +1,7 @@
 import pygame
 from GameVariables.GameVariables import GameVariables as GV
 from GameVariables.Rocket import Rocket, Rockets
+from GameVariables.GameVariables import Controls
 
 
 
@@ -22,13 +23,16 @@ class Player1:
 
     def move(self):
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_a]:
+        if keys[Controls.P1_LEFT]:
             self.x -= self.dx
-        if keys[pygame.K_d]:
+
+        if keys[Controls.P1_RIGHT]:
             self.x += self.dx
-        if keys[pygame.K_w]:
+
+        if keys[Controls.P1_UP]:
             self.y -= self.dx
-        if keys[pygame.K_s]:
+
+        if keys[Controls.P1_DOWN]:
             self.y += self.dx
 
         if self.x < -20:
@@ -43,7 +47,6 @@ class Player1:
     def update_and_draw(self):
         self.move()
         self.rockets.update_and_draw()
-        # KI bis wir es gelernt haben
         self.screen.blit(self.image, (self.x, self.y))
 
 
@@ -64,13 +67,16 @@ class Player2:
 
     def move(self):
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_LEFT]:
+        if keys[Controls.P2_LEFT]:
             self.x -= self.dx
-        if keys[pygame.K_RIGHT]:
+
+        if keys[Controls.P2_RIGHT]:
             self.x += self.dx
-        if keys[pygame.K_UP]:
+
+        if keys[Controls.P2_UP]:
             self.y -= self.dx
-        if keys[pygame.K_DOWN]:
+
+        if keys[Controls.P2_DOWN]:
             self.y += self.dx
 
         if self.x < 0:
@@ -86,7 +92,6 @@ class Player2:
     def update_and_draw(self):
         self.move()
         self.rockets.update_and_draw()
-        # KI bis wir es gelernt haben
         self.screen.blit(self.image, (self.x, self.y))
 
 

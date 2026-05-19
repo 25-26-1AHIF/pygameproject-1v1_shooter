@@ -4,6 +4,7 @@ import pygame
 from GameVariables.GameVariables import GameVariables as gv
 from GameVariables.GameVariables import GameScreens as gs
 from GameVariables.Player import Player1, Player2
+from GameVariables.GameVariables import Controls
 
 
 def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
@@ -28,6 +29,30 @@ def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     starten_button = pygame.Rect(0, 170, 220, 70)
     schließen_button = pygame.Rect(0, 370, 220, 70)
     keybinds_button = pygame.Rect(0, 270, 220, 70)
+
+    start_figur = pygame.image.load("bilder/personfürstartscreen.png")
+    start_figur = pygame.transform.scale(
+        start_figur,
+        (500, 500)
+    )
+    start_figur1 = pygame.image.load("bilder/personfürstartscreen1.png")
+    start_figur1 = pygame.transform.scale(
+        start_figur1,
+        (500, 500)
+    )
+
+    start_figur2 = pygame.image.load("bilder/personfürstartscreen2-.png")
+    start_figur2 = pygame.transform.scale(
+        start_figur2,
+        (500, 500)
+    )
+
+    start_figur3 = pygame.image.load("bilder/personfürstartscreen3.png")
+    start_figur3 = pygame.transform.scale(
+        start_figur3,
+        (500, 500)
+    )
+
     running = True
     while running:
         mouse_pos = pygame.mouse.get_pos()
@@ -50,31 +75,6 @@ def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                         return gs.SETTINGS
 
         screen.blit(mainscreen_bild, (0, 0))
-        start_figur = pygame.image.load("bilder/personfürstartscreen.png")
-        start_figur = pygame.transform.scale(
-            start_figur,
-            (500, 500)
-        )
-        start_figur1 = pygame.image.load("bilder/personfürstartscreen1.png")
-        start_figur1 = pygame.transform.scale(
-            start_figur1,
-            (500, 500)
-        )
-
-        start_figur2 = pygame.image.load("bilder/personfürstartscreen2-.png")
-        start_figur2 = pygame.transform.scale(
-            start_figur2,
-            (500, 500)
-        )
-
-        start_figur3 = pygame.image.load("bilder/personfürstartscreen3.png")
-        start_figur3 = pygame.transform.scale(
-            start_figur3,
-            (500, 500)
-        )
-
-
-
 
         # HOVER Farben
         # KI -- Wie mache ich Hovereffekt?
@@ -163,11 +163,6 @@ def settings_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
     )
 
     titel_text = gv.FONT_BIG.render(" 1 vs 1 Shooter ", True, "black")
-
-
-
-
-
     Player_1_text = gv.FONT_MIDDLE.render(" Player 1 ", True, "black")
     Player_2_text = gv.FONT_MIDDLE.render(" Player 2 ", True, "black")
 
@@ -176,34 +171,104 @@ def settings_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
     Player_1_text_rect = Player_1_text.get_rect(center=(275, 175))
     Player_2_text_rect = Player_2_text.get_rect(center=(700, 175))
 
-    P1_springen_text = gv.FONT_SMALL.render(" Springen:    W    ", True, "white")
-    P1_rechts_text = gv.FONT_SMALL.render(" Rechts:    D    ", True, "white")
-    P1_links_text  = gv.FONT_SMALL.render(" Links:    A    ", True, "white")
-    P1_schießen_text = gv.FONT_SMALL.render(" Schießen:    E    ", True, "white")
-
-    P2_springen_text = gv.FONT_SMALL.render(" Springen:    ^    ", True, "white")
-    P2_rechts_text = gv.FONT_SMALL.render(" Rechts:    >    ", True, "white")
-    P2_links_text = gv.FONT_SMALL.render(" Links:    <    ", True, "white")
-    P2_schießen_text = gv.FONT_SMALL.render(" Schießen: RShift ", True, "white")
-
     P1_links_rect = pygame.Rect(180, 220, 270, 55)
     P1_rechts_rect = pygame.Rect(180, 300, 270, 55)
     P1_springen_rect = pygame.Rect(180, 380, 270, 55)
     P1_schießen_rect = pygame.Rect(180, 460, 270, 55)
+
 
     P2_links_rect = pygame.Rect(600, 220, 270, 55)
     P2_rechts_rect = pygame.Rect(600, 300, 270, 55)
     P2_springen_rect = pygame.Rect(600, 380, 270, 55)
     P2_schießen_rect = pygame.Rect(600, 460, 270, 55)
 
+    key = None
+
     running = True
     while running:
+        #Ki chatgpt wie mache ich benutzerdefinierte keybinds
+        #Ki chatgpt wie mache ich inputs im Pygame
+        #Kein Code kopiert, nur inputs geholt
+        #auch controls in GameVariables
+        #printed neuste keybind version
+        P1_links_text = gv.FONT_SMALL.render(f"Links: {pygame.key.name(Controls.P1_LEFT)}", True, "white")
+        P1_rechts_text = gv.FONT_SMALL.render(f"Rechts: {pygame.key.name(Controls.P1_RIGHT)}", True, "white")
+        P1_springen_text = gv.FONT_SMALL.render(f"Springen: {pygame.key.name(Controls.P1_UP)}", True, "white")
+        P1_schießen_text = gv.FONT_SMALL.render(f"Schießen: {pygame.key.name(Controls.P1_SHOOT)}", True, "white")
+
+        P2_links_text = gv.FONT_SMALL.render(f"Links: {pygame.key.name(Controls.P2_LEFT)}", True, "white")
+        P2_rechts_text = gv.FONT_SMALL.render(f"Rechts: {pygame.key.name(Controls.P2_RIGHT)}", True, "white")
+        P2_springen_text = gv.FONT_SMALL.render(f"Springen: {pygame.key.name(Controls.P2_UP)}", True, "white")
+        P2_schießen_text = gv.FONT_SMALL.render(f"Schießen: {pygame.key.name(Controls.P2_SHOOT)}", True, "white")
+
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
             if event.type == pygame.KEYDOWN:
-               if event.key == pygame.K_ESCAPE:
-                   return gs.MENUE
+                # Ki chatgpt wie mache ich benutzerdefinierte keybinds
+                # Ki chatgpt wie mache ich inputs im Pygame
+                # Kein Code kopiert, nur inputs geholt
+                #ändert wert
+                if key != None:
+
+                    if key == "P1_LEFT":
+                        Controls.P1_LEFT = event.key
+
+                    elif key == "P1_RIGHT":
+                        Controls.P1_RIGHT = event.key
+
+                    elif key == "P1_UP":
+                        Controls.P1_UP = event.key
+
+                    elif key == "P1_SHOOT":
+                        Controls.P1_SHOOT = event.key
+
+                    elif key == "P2_LEFT":
+                        Controls.P2_LEFT = event.key
+
+                    elif key == "P2_RIGHT":
+                        Controls.P2_RIGHT = event.key
+
+                    elif key == "P2_UP":
+                        Controls.P2_UP = event.key
+
+                    elif key == "P2_SHOOT":
+                        Controls.P2_SHOOT = event.key
+
+                    key = None
+
+                elif event.key == pygame.K_ESCAPE:
+                    return gs.MENUE
+
+            #check ob ein Keybind berührt wird
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    if P1_links_rect.collidepoint(event.pos):
+                        key = "P1_LEFT"
+
+                    if P1_rechts_rect.collidepoint(event.pos):
+                        key = "P1_RIGHT"
+
+                    if P1_springen_rect.collidepoint(event.pos):
+                        key = "P1_UP"
+
+                    if P1_schießen_rect.collidepoint(event.pos):
+                        key = "P1_SHOOT"
+
+                    if P2_links_rect.collidepoint(event.pos):
+                        key = "P2_LEFT"
+
+                    if P2_rechts_rect.collidepoint(event.pos):
+                        key = "P2_RIGHT"
+
+                    if P2_springen_rect.collidepoint(event.pos):
+                        key = "P2_UP"
+
+                    if P2_schießen_rect.collidepoint(event.pos):
+                        key = "P2_SHOOT"
+
+
         screen.blit(settings_bild, (0,0))
 
         rect = pygame.Rect(80, 110, 850, 450) #Ki chatgpt #wie lasse ich diese seite besser aussehen? (screenshot) Kein code kopiert
@@ -221,20 +286,20 @@ def settings_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
         pygame.draw.rect(screen, gv.hellblau_farbe, P1_springen_rect, border_radius=10)
         pygame.draw.rect(screen, gv.hellblau_farbe, P1_links_rect, border_radius=10)
         pygame.draw.rect(screen, gv.hellblau_farbe, P1_rechts_rect, border_radius=10)
-        pygame.draw.rect(screen, gv.hellblau_farbe, P1_schießen_rect,  border_radius=10)
+        pygame.draw.rect(screen, gv.hellblau_farbe, P1_schießen_rect ,  border_radius=10)
         screen.blit(P1_springen_text, P1_springen_rect)
         screen.blit(P1_rechts_text, P1_rechts_rect)
         screen.blit(P1_links_text, P1_links_rect)
-        screen.blit(P1_schießen_text, P1_schießen_rect)
+        screen.blit(P1_schießen_text, P1_schießen_rect )
 
         pygame.draw.rect(screen, gv.hellblau_farbe, P2_springen_rect, border_radius=10)
         pygame.draw.rect(screen, gv.hellblau_farbe, P2_links_rect, border_radius=10)
         pygame.draw.rect(screen, gv.hellblau_farbe, P2_rechts_rect, border_radius=10)
-        pygame.draw.rect(screen, gv.hellblau_farbe, P2_schießen_rect, border_radius=10)
+        pygame.draw.rect(screen, gv.hellblau_farbe, P2_schießen_rect , border_radius=10)
         screen.blit(P2_springen_text, P2_springen_rect)
         screen.blit(P2_links_text, P2_links_rect)
         screen.blit(P2_rechts_text, P2_rechts_rect)
-        screen.blit(P2_schießen_text, P2_schießen_rect)
+        screen.blit(P2_schießen_text, P2_schießen_rect )
 
 
         clock.tick(gv.FPS)
@@ -264,12 +329,10 @@ def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                 if event.key == pygame.K_SPACE:
                     return gs.PAUSE
 
-                # Player1 schießt mit E
-                if event.key == pygame.K_e:
+                if event.key == Controls.P1_SHOOT:
                     player1.shoot()
 
-                # Player2 schießt mit rechter SHIFT
-                if event.key == pygame.K_RSHIFT:
+                if event.key == Controls.P2_SHOOT:
                     player2.shoot()
 
         screen.blit(hintergrund, (0, 0))
