@@ -4,6 +4,8 @@ class GameVariables:
     FPS = 60
     SCREEN_HEIGHT = 600
     SCREEN_WIDTH = 1000
+    Bild_x = 300
+    Bild_y = 300
 
     FONT_BIG:pygame.sysfont.Font = None
     FONT_MIDDLE:pygame.sysfont.Font = None

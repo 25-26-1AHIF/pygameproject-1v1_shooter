@@ -22,6 +22,7 @@ def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     schließen_text = gv.FONT_MIDDLE.render(" Quit ", True, "white")
     keybinds_text = gv.FONT_MIDDLE.render(" Keybinds ", True, "white")
 
+
     titel_text_rect = titel_text.get_rect(center=(gv.SCREEN_WIDTH / 2, 50))
 
     starten_button = pygame.Rect(0, 170, 220, 70)
@@ -48,6 +49,14 @@ def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                     return gs.SETTINGS
 
         screen.blit(mainscreen_bild, (0, 0))
+        image = pygame.image.load("bilder/personfürstartscreen.png")
+        image = pygame.transform.scale(
+            image,
+            (500, 500)
+        )
+        screen.blit(image, (175, 60))
+
+
 
         # HOVER Farben
         starten_farbe = gv.lila_farbe
