@@ -41,12 +41,13 @@ def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                     return gs.EXIT
 
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if starten_button.collidepoint(event.pos):
-                    return gs.PLAY
-                if schließen_button.collidepoint(event.pos):
-                    return gs.EXIT
-                if keybinds_button.collidepoint(event.pos):
-                    return gs.SETTINGS
+                if event.button == 1: # AI CHatgpt wie mache ich in pygame nur mousebotton left
+                    if starten_button.collidepoint(event.pos):
+                        return gs.PLAY
+                    if schließen_button.collidepoint(event.pos):
+                        return gs.EXIT
+                    if keybinds_button.collidepoint(event.pos):
+                        return gs.SETTINGS
 
         screen.blit(mainscreen_bild, (0, 0))
 
@@ -61,6 +62,12 @@ def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
             (450, 450)
         )
 
+        start_figur2 = pygame.image.load("bilder/personfürstartscreen2-.png")
+        start_figur2 = pygame.transform.scale(
+            start_figur2,
+            (500, 500)
+        )
+
 
         # HOVER Farben
         # KI -- Wie mache ich Hovereffekt?
@@ -72,11 +79,12 @@ def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
         if starten_button.collidepoint(mouse_pos):
             starten_farbe = gv.hellblau_farbe
             screen.blit(start_figur, (175, 60))
-        elif schließen_button.collidepoint(mouse_pos):
-            schließen_farbe = gv.hellblau_farbe
-
         elif keybinds_button.collidepoint(mouse_pos):
             keybinds_farbe = gv.hellblau_farbe
+            screen.blit(start_figur2, (175, 80))
+
+        elif schließen_button.collidepoint(mouse_pos):
+            schließen_farbe = gv.hellblau_farbe
 
         else:
             screen.blit(start_figur1, (200, 100))
