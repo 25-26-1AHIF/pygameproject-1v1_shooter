@@ -49,12 +49,12 @@ def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                     return gs.SETTINGS
 
         screen.blit(mainscreen_bild, (0, 0))
-        image = pygame.image.load("bilder/personfürstartscreen.png")
-        image = pygame.transform.scale(
-            image,
+        start_figur = pygame.image.load("bilder/personfürstartscreen.png")
+        start_figur = pygame.transform.scale(
+            start_figur,
             (500, 500)
         )
-        screen.blit(image, (175, 60))
+
 
 
 
@@ -67,7 +67,7 @@ def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
 
         if starten_button.collidepoint(mouse_pos):
             starten_farbe = gv.hellblau_farbe
-
+            screen.blit(start_figur, (175, 60))
         if schließen_button.collidepoint(mouse_pos):
             schließen_farbe = gv.hellblau_farbe
 
@@ -260,13 +260,13 @@ def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
 
 
 def sieger_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
-    hintergrundwinner1_bild = pygame.image.load("bilder/mainscreen.jpeg").convert()
+    hintergrundwinner1_bild = pygame.image.load("bilder/winner1.jpeg").convert()
     hintergrundwinner1_bild = pygame.transform.scale(
         hintergrundwinner1_bild,
         (gv.SCREEN_WIDTH, gv.SCREEN_HEIGHT)
     )
 
-    hintergrundwinner2_bild = pygame.image.load("bilder/mainscreen.jpeg").convert()
+    hintergrundwinner2_bild = pygame.image.load("bilder/winner2.jpeg").convert()
     hintergrundwinner2_bild = pygame.transform.scale(
         hintergrundwinner2_bild,
         (gv.SCREEN_WIDTH, gv.SCREEN_HEIGHT)
