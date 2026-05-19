@@ -7,11 +7,12 @@ from GameVariables.Rocket import Rocket, Rockets
 class Player1:
     def __init__(self, screen):
         self.screen = screen
-        self.x = 100
+        self.x = 50
         self.y = GV.SCREEN_HEIGHT // 2
         self.dx = 6
         self.rockets = Rockets(screen)
         self.image = pygame.image.load("bilder/Personarmnachrechts.png")
+
 
     def shoot(self):
         muni_x = self.x + 25
@@ -62,6 +63,7 @@ class Player2:
             self.y -= self.dx
         if keys[pygame.K_DOWN]:
             self.y += self.dx
+
 
     def update_and_draw(self):
         self.move()

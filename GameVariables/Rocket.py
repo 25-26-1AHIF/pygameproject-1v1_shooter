@@ -9,7 +9,7 @@ class Rocket:
         self.dx = dx
         self.dy = dy
         self.width = 10
-        self.height = 20
+        self.height = 10
         self.rect = pygame.Rect(self.xpos, self.ypos, self.width, self.height)
 
     def update_and_draw(self):
