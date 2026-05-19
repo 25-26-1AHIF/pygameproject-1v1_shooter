@@ -50,7 +50,6 @@ def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                         return gs.SETTINGS
 
         screen.blit(mainscreen_bild, (0, 0))
-
         start_figur = pygame.image.load("bilder/personfürstartscreen.png")
         start_figur = pygame.transform.scale(
             start_figur,
@@ -59,7 +58,7 @@ def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
         start_figur1 = pygame.image.load("bilder/personfürstartscreen1.png")
         start_figur1 = pygame.transform.scale(
             start_figur1,
-            (450, 450)
+            (500, 500)
         )
 
         start_figur2 = pygame.image.load("bilder/personfürstartscreen2-.png")
@@ -67,6 +66,8 @@ def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
             start_figur2,
             (500, 500)
         )
+
+
 
 
         # HOVER Farben
@@ -88,7 +89,6 @@ def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
 
         else:
             screen.blit(start_figur1, (200, 100))
-
 
         pygame.draw.rect(screen, starten_farbe, starten_button, border_radius=10)
         pygame.draw.rect(screen, schließen_farbe, schließen_button, border_radius=10)

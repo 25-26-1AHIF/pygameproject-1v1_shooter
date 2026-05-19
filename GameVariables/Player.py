@@ -31,6 +31,15 @@ class Player1:
         if keys[pygame.K_s]:
             self.y += self.dx
 
+        if self.x < -20:
+            self.x = -20
+        if self.x > 915:
+            self.x = 915
+        if self.y < 10:
+            self.y = 10
+        if self.y > 500:
+            self.y = 500
+
     def update_and_draw(self):
         self.move()
         self.rockets.update_and_draw()
@@ -63,6 +72,15 @@ class Player2:
             self.y -= self.dx
         if keys[pygame.K_DOWN]:
             self.y += self.dx
+
+        if self.x < 0:
+            self.x = 0
+        if self.x > 930:
+            self.x = 930
+        if self.y < 10:
+            self.y = 10
+        if self.y > 500:
+            self.y = 500
 
 
     def update_and_draw(self):
