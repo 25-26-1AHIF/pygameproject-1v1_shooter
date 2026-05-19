@@ -142,20 +142,21 @@ def settings_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
     P1_links_text  = gv.FONT_SMALL.render(" Links:    A    ", True, "white")
     P1_schießen_text = gv.FONT_SMALL.render(" Schießen:    E    ", True, "white")
 
+
     P2_springen_text = gv.FONT_SMALL.render(" Springen:    ^    ", True, "white")
     P2_rechts_text = gv.FONT_SMALL.render(" Rechts:    >    ", True, "white")
     P2_links_text = gv.FONT_SMALL.render(" Links:    <    ", True, "white")
-    P2_schießen_text = gv.FONT_SMALL.render(" Schießen:    .    ", True, "white")
+    P2_schießen_text = gv.FONT_SMALL.render("Schießen: Right Shift", True, "white")
 
-    P1_links_rect = pygame.Rect(180, 220, 220, 55)
-    P1_rechts_rect = pygame.Rect(180, 300, 220, 55)
-    P1_springen_rect = pygame.Rect(180, 380, 220, 55)
-    P1_schießen_rect = pygame.Rect(180, 460, 220, 55)
+    P1_links_rect = pygame.Rect(180, 220, 270, 55)
+    P1_rechts_rect = pygame.Rect(180, 300, 270, 55)
+    P1_springen_rect = pygame.Rect(180, 380, 270, 55)
+    P1_schießen_rect = pygame.Rect(180, 460, 270, 55)
 
-    P2_links_rect = pygame.Rect(600, 220, 220, 55)
-    P2_rechts_rect = pygame.Rect(600, 300, 220, 55)
-    P2_springen_rect = pygame.Rect(600, 380, 220, 55)
-    P2_schießen_rect = pygame.Rect(600, 460, 220, 55)
+    P2_links_rect = pygame.Rect(600, 220, 270, 55)
+    P2_rechts_rect = pygame.Rect(600, 300, 270, 55)
+    P2_springen_rect = pygame.Rect(600, 380, 270, 55)
+    P2_schießen_rect = pygame.Rect(600, 460, 270, 55)
 
     running = True
     while running:
@@ -222,6 +223,8 @@ def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     return gs.MENUE
+                if event.key == pygame.K_SPACE:
+                    return gs.PAUSE
 
                 # Player1 schießt mit E
                 if event.key == pygame.K_e:
