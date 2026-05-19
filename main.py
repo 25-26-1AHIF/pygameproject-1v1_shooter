@@ -196,9 +196,9 @@ def settings_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
         P1_springen_text = gv.FONT_SMALL.render(f"Springen: {pygame.key.name(Controls.P1_UP)}", True, "white")
         P1_schießen_text = gv.FONT_SMALL.render(f"Schießen: {pygame.key.name(Controls.P1_SHOOT)}", True, "white")
 
-        P2_links_text = gv.FONT_SMALL.render(f"Links: {pygame.key.name(Controls.P2_LEFT)}", True, "white")
-        P2_rechts_text = gv.FONT_SMALL.render(f"Rechts: {pygame.key.name(Controls.P2_RIGHT)}", True, "white")
-        P2_springen_text = gv.FONT_SMALL.render(f"Springen: {pygame.key.name(Controls.P2_UP)}", True, "white")
+        P2_links_text = gv.FONT_SMALL.render(f" Links: {pygame.key.name(Controls.P2_LEFT)}", True, "white")
+        P2_rechts_text = gv.FONT_SMALL.render(f" Rechts: {pygame.key.name(Controls.P2_RIGHT)}", True, "white")
+        P2_springen_text = gv.FONT_SMALL.render(f" Springen: {pygame.key.name(Controls.P2_UP)}", True, "white")
         P2_schießen_text = gv.FONT_SMALL.render(f"Schießen: {pygame.key.name(Controls.P2_SHOOT)}", True, "white")
 
 
@@ -209,30 +209,22 @@ def settings_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
                 # Ki chatgpt wie mache ich benutzerdefinierte keybinds
                 # Ki chatgpt wie mache ich inputs im Pygame
                 # Kein Code kopiert, nur inputs geholt
-                #ändert wert
-                if key != None:
-
+                # ändert wert
+                if key is not None:
                     if key == "P1_LEFT":
                         Controls.P1_LEFT = event.key
-
                     elif key == "P1_RIGHT":
                         Controls.P1_RIGHT = event.key
-
                     elif key == "P1_UP":
                         Controls.P1_UP = event.key
-
                     elif key == "P1_SHOOT":
                         Controls.P1_SHOOT = event.key
-
                     elif key == "P2_LEFT":
                         Controls.P2_LEFT = event.key
-
                     elif key == "P2_RIGHT":
                         Controls.P2_RIGHT = event.key
-
                     elif key == "P2_UP":
                         Controls.P2_UP = event.key
-
                     elif key == "P2_SHOOT":
                         Controls.P2_SHOOT = event.key
 
@@ -269,7 +261,7 @@ def settings_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
                         key = "P2_SHOOT"
 
 
-        screen.blit(settings_bild, (0,0))
+        screen.blit(settings_bild, (0, 0))
 
         rect = pygame.Rect(80, 110, 850, 450) #Ki chatgpt #wie lasse ich diese seite besser aussehen? (screenshot) Kein code kopiert
 
@@ -301,6 +293,9 @@ def settings_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
         screen.blit(P2_rechts_text, P2_rechts_rect)
         screen.blit(P2_schießen_text, P2_schießen_rect )
 
+        if key is not None:
+            info_text = gv.FONT_MIDDLE.render("Drücke eine Taste...", True, "white")
+            screen.blit(info_text, (gv.SCREEN_WIDTH / 2 - 200, gv.SCREEN_HEIGHT-50))
 
         clock.tick(gv.FPS)
         pygame.display.flip()
