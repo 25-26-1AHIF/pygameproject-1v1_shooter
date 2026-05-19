@@ -49,13 +49,17 @@ def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
                     return gs.SETTINGS
 
         screen.blit(mainscreen_bild, (0, 0))
+
         start_figur = pygame.image.load("bilder/personfürstartscreen.png")
         start_figur = pygame.transform.scale(
             start_figur,
             (500, 500)
         )
-
-
+        start_figur1 = pygame.image.load("bilder/personfürstartscreen1.png")
+        start_figur1 = pygame.transform.scale(
+            start_figur1,
+            (450, 450)
+        )
 
 
         # HOVER Farben
@@ -68,11 +72,15 @@ def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
         if starten_button.collidepoint(mouse_pos):
             starten_farbe = gv.hellblau_farbe
             screen.blit(start_figur, (175, 60))
-        if schließen_button.collidepoint(mouse_pos):
+        elif schließen_button.collidepoint(mouse_pos):
             schließen_farbe = gv.hellblau_farbe
 
-        if keybinds_button.collidepoint(mouse_pos):
+        elif keybinds_button.collidepoint(mouse_pos):
             keybinds_farbe = gv.hellblau_farbe
+
+        else:
+            screen.blit(start_figur1, (200, 100))
+
 
         pygame.draw.rect(screen, starten_farbe, starten_button, border_radius=10)
         pygame.draw.rect(screen, schließen_farbe, schließen_button, border_radius=10)
