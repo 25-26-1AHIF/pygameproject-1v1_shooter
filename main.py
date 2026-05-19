@@ -59,6 +59,8 @@ def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
 
 
         # HOVER Farben
+        # KI -- Wie mache ich Hovereffekt?
+        #chatgpt Kein code kopiert
         starten_farbe = gv.lila_farbe
         schließen_farbe = gv.lila_farbe
         keybinds_farbe = gv.lila_farbe
@@ -181,7 +183,7 @@ def settings_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
                    return gs.MENUE
         screen.blit(settings_bild, (0,0))
 
-        rect = pygame.Rect(80, 110, 850, 450)
+        rect = pygame.Rect(80, 110, 850, 450) #Ki chatgpt #wie lasse ich diese seite besser aussehen? (screenshot) Kein code kopiert
 
         pygame.draw.rect(screen, gv.grau_farbe, rect, border_radius=25)
         pygame.draw.rect(screen, gv.hellblau_farbe, rect, 4, border_radius=25)
@@ -222,7 +224,7 @@ def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     hintergrund = pygame.image.load("bilder/Hintergrundgame.jpeg").convert()
     hintergrund = pygame.transform.scale(hintergrund, (gv.SCREEN_WIDTH, gv.SCREEN_HEIGHT))
 
-    pygame.display.set_caption("||| PLAY |||")
+    pygame.display.set_caption("||| 🔫  1vs1 Shooter 🔫||| PLAY |||")
 
     player1 = Player1(screen)
     player2 = Player2(screen)
