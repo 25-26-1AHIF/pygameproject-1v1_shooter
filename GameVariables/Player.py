@@ -34,7 +34,6 @@ class Player1:
     def update_and_draw(self):
         self.move()
         self.rockets.update_and_draw()
-        # KI bis wir es gelernt haben
         self.screen.blit(self.image, (self.x, self.y))
 
 
@@ -68,7 +67,6 @@ class Player2:
     def update_and_draw(self):
         self.move()
         self.rockets.update_and_draw()
-        # KI bis wir es gelernt haben
         self.screen.blit(self.image, (self.x, self.y))
 
 
