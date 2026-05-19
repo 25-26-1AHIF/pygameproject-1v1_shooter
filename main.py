@@ -10,7 +10,7 @@ def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
     pygame.init()
     pygame.display.set_caption("||| 🔫 1vs1 Shooter 🔫 ||| MENÜ |||")
 
-    mainscreen_bild = pygame.image.load("bilder/mainscreen.jpeg")
+    mainscreen_bild = pygame.image.load("bilder/mainscreen.jpeg").convert()
     mainscreen_bild = pygame.transform.scale(
         mainscreen_bild,
         (gv.SCREEN_WIDTH, gv.SCREEN_HEIGHT)
@@ -83,7 +83,7 @@ def pause_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
     pygame.init()
     pygame.display.set_caption("||| 🔫 1vs1 Shooter 🔫 ||| PAUSE |||")
 
-    Pausescreen_bild = pygame.image.load("bilder/chatgpt Pause screen.png")
+    Pausescreen_bild = pygame.image.load("bilder/chatgpt Pause screen.png").convert()
     Pausescreen_bild = pygame.transform.scale(
         Pausescreen_bild,
         (gv.SCREEN_WIDTH, gv.SCREEN_HEIGHT)
@@ -121,7 +121,7 @@ def settings_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
     pygame.display.set_caption("||| 🔫 1vs1 Shooter 🔫 ||| Settings |||")
 
 
-    settings_bild = pygame.image.load("bilder/chatgpt settigs screen.png")
+    settings_bild = pygame.image.load("bilder/chatgpt settigs screen.png").convert()
 
     settings_bild = pygame.transform.scale(
         settings_bild,
@@ -129,6 +129,11 @@ def settings_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
     )
 
     titel_text = gv.FONT_BIG.render(" 1 vs 1 Shooter ", True, "black")
+
+
+
+
+
     Player_1_text = gv.FONT_MIDDLE.render(" Player 1 ", True, "black")
     Player_2_text = gv.FONT_MIDDLE.render(" Player 2 ", True, "black")
 
@@ -206,7 +211,7 @@ def settings_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
 
 
 def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
-    hintergrund = pygame.image.load("bilder/Hintergrundgame.jpeg")
+    hintergrund = pygame.image.load("bilder/Hintergrundgame.jpeg").convert()
     hintergrund = pygame.transform.scale(hintergrund, (gv.SCREEN_WIDTH, gv.SCREEN_HEIGHT))
 
     pygame.display.set_caption("||| PLAY |||")
@@ -245,13 +250,13 @@ def play_screen(screen: pygame.Surface, clock: pygame.time.Clock):
 
 
 def sieger_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
-    hintergrundwinner1_bild = pygame.image.load("bilder/mainscreen.jpeg")
+    hintergrundwinner1_bild = pygame.image.load("bilder/mainscreen.jpeg").convert()
     hintergrundwinner1_bild = pygame.transform.scale(
         hintergrundwinner1_bild,
         (gv.SCREEN_WIDTH, gv.SCREEN_HEIGHT)
     )
 
-    hintergrundwinner2_bild = pygame.image.load("bilder/mainscreen.jpeg")
+    hintergrundwinner2_bild = pygame.image.load("bilder/mainscreen.jpeg").convert()
     hintergrundwinner2_bild = pygame.transform.scale(
         hintergrundwinner2_bild,
         (gv.SCREEN_WIDTH, gv.SCREEN_HEIGHT)
