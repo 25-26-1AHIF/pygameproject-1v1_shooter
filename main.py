@@ -142,11 +142,10 @@ def settings_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
     P1_links_text  = gv.FONT_SMALL.render(" Links:    A    ", True, "white")
     P1_schießen_text = gv.FONT_SMALL.render(" Schießen:    E    ", True, "white")
 
-
     P2_springen_text = gv.FONT_SMALL.render(" Springen:    ^    ", True, "white")
     P2_rechts_text = gv.FONT_SMALL.render(" Rechts:    >    ", True, "white")
     P2_links_text = gv.FONT_SMALL.render(" Links:    <    ", True, "white")
-    P2_schießen_text = gv.FONT_SMALL.render("Schießen: Right Shift", True, "white")
+    P2_schießen_text = gv.FONT_SMALL.render(" Schießen: RShift ", True, "white")
 
     P1_links_rect = pygame.Rect(180, 220, 270, 55)
     P1_rechts_rect = pygame.Rect(180, 300, 270, 55)
