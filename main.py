@@ -263,7 +263,7 @@ def settings_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
 
         screen.blit(settings_bild, (0, 0))
 
-        rect = pygame.Rect(80, 110, 850, 450) #Ki chatgpt #wie lasse ich diese seite besser aussehen? (screenshot) Kein code kopiert
+        rect = pygame.Rect(80, 110, 850, 430) #Ki chatgpt #wie lasse ich diese seite besser aussehen? (screenshot) Kein code kopiert
 
         pygame.draw.rect(screen, gv.grau_farbe, rect, border_radius=25)
         pygame.draw.rect(screen, gv.hellblau_farbe, rect, 4, border_radius=25)
@@ -295,7 +295,7 @@ def settings_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
 
         if key is not None:
             info_text = gv.FONT_MIDDLE.render("Drücke eine Taste...", True, "white")
-            screen.blit(info_text, (gv.SCREEN_WIDTH / 2 - 200, gv.SCREEN_HEIGHT-50))
+            screen.blit(info_text, (gv.SCREEN_WIDTH / 2 - 200, gv.SCREEN_HEIGHT-75))
 
         clock.tick(gv.FPS)
         pygame.display.flip()
