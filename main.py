@@ -92,7 +92,7 @@ def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
 
         elif schließen_button.collidepoint(mouse_pos):
             schließen_farbe = gv.hellblau_farbe
-            screen.blit(start_figur3, (175, 40))
+            screen.blit(start_figur3, (175, 80))
 
         else:
             screen.blit(start_figur1, (200, 100))
@@ -406,3 +406,4 @@ if __name__ == '__main__':
         elif gs.actual == gs.EXIT:
             print("Game beendet")
             break
+    pygame.quit()
