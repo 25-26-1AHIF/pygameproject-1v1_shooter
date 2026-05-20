@@ -1,6 +1,6 @@
 import pygame
 from GameVariables.GameVariables import GameVariables as GV
-from GameVariables.Rocket import Rocket, Rockets
+from Game.Rocket import Rocket, Rockets
 from GameVariables.GameVariables import Controls
 
 

@@ -3,8 +3,9 @@ import pygame
 
 from GameVariables.GameVariables import GameVariables as gv
 from GameVariables.GameVariables import GameScreens as gs
-from GameVariables.Player import Player1, Player2
+from Game.Player import Player1, Player2
 from GameVariables.GameVariables import Controls
+from Game.pausemann import Pausemann
 
 
 def menue_screen(screen: pygame.Surface, clock: pygame.time.Clock):
@@ -125,6 +126,8 @@ def pause_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
     pause_text = gv.FONT_BIG.render(" GAME PAUSIERT ", True, "white")
     leer_text = gv.FONT_MIDDLE.render(" Leertaste um Fortzufahren ", True,  gv.hellgrau_farbe)
 
+    pausemann = Pausemann(screen)
+
     running = True
     while running:
         for event in pygame.event.get():
@@ -138,6 +141,7 @@ def pause_screen(screen: pygame.Surface ,clock: pygame.time.Clock):
                     if event.key == pygame.K_ESCAPE:
                         return gs.MENUE
         screen.blit(Pausescreen_bild, (0,0))
+        pausemann.update_and_draw()
 
         pause_box = pygame.Rect(150, 140, 700, 250)
 
