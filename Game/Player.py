@@ -1,4 +1,5 @@
 import pygame
+import time
 from GameVariables.GameVariables import GameVariables as GV
 from Game.Rocket import Rocket, Rockets
 from GameVariables.GameVariables import Controls
@@ -31,6 +32,8 @@ class Player1:
 
         if keys[Controls.P1_UP]:
             self.y -= self.dx
+
+            self.y += self.dx
 
         if keys[Controls.P1_DOWN]:
             self.y += self.dx
