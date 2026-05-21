@@ -41,11 +41,11 @@ class Controls:
     P1_LEFT = pygame.K_a
     P1_RIGHT = pygame.K_d
     P1_UP = pygame.K_w
-    P1_DOWN = pygame.K_s
+#    P1_DOWN = pygame.K_s
     P1_SHOOT = pygame.K_e
 
     P2_LEFT = pygame.K_LEFT
     P2_RIGHT = pygame.K_RIGHT
     P2_UP = pygame.K_UP
-    P2_DOWN = pygame.K_DOWN
+#    P2_DOWN = pygame.K_DOWN
     P2_SHOOT = pygame.K_RSHIFT

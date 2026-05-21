@@ -1,5 +1,5 @@
 import pygame
-import time
+
 from GameVariables.GameVariables import GameVariables as GV
 from Game.Rocket import Rocket, Rockets
 from GameVariables.GameVariables import Controls
@@ -35,8 +35,8 @@ class Player1:
 
             self.y += self.dx
 
-        if keys[Controls.P1_DOWN]:
-            self.y += self.dx
+#        if keys[Controls.P1_DOWN]:
+ #           self.y += self.dx
 
         if self.x < -20:
             self.x = -20
@@ -79,8 +79,8 @@ class Player2:
         if keys[Controls.P2_UP]:
             self.y -= self.dx
 
-        if keys[Controls.P2_DOWN]:
-            self.y += self.dx
+#        if keys[Controls.P2_DOWN]:
+ #           self.y += self.dx
 
         if self.x < 0:
             self.x = 0
@@ -96,5 +96,4 @@ class Player2:
         self.move()
         self.rockets.update_and_draw()
         self.screen.blit(self.image, (self.x, self.y))
-
 
